@@ -1,4 +1,5 @@
-﻿using ApiTestFramework.Core;
+﻿using System.Net;
+using ApiTestFramework.Core;
 using ApiTestFramework.Models;
 using ApiTestFramework.Helpers;
 using FluentAssertions;
@@ -19,10 +20,10 @@ namespace ApiTestFramework.ApiTests
         [Test, Category("Smoke")]
         public async Task GetOrders_ShouldReturnSuccess()
         {
-            var endpoint = Endpoints.Orders;
+            const string endpoint = Endpoints.Orders;
             var response = await _apiClient.GetAsync<Order[]>(endpoint);
 
-            response.StatusCode.Should().Be(System.Net.HttpStatusCode.OK);
+            response.StatusCode.Should().Be(HttpStatusCode.OK);
             response.Data.Should().NotBeNull();
             response.Data.Length.Should().BeGreaterThan(0);
         }
@@ -30,12 +31,12 @@ namespace ApiTestFramework.ApiTests
         [Test, Category("Smoke")]
         public async Task GetOrderById_ShouldReturnCorrectOrder()
         {
-            int orderId = 1;
-            var endpoint = Endpoints.OrderById.Replace("{id}", orderId.ToString());
-
+            const int orderId = 1;
+            var endpoint = Endpoints.OrderById(orderId.ToString());
             var response = await _apiClient.GetAsync<Order>(endpoint);
 
-            response.StatusCode.Should().Be(System.Net.HttpStatusCode.OK);
+            response.StatusCode.Should().Be(HttpStatusCode.OK);
+            response.Data.Should().NotBeNull();
             response.Data.Id.Should().Be(orderId);
             response.Data.Title.Should().NotBeNullOrEmpty();
         }

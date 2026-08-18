@@ -23,7 +23,7 @@ namespace ApiTestFramework.Core
         /// <summary>
         /// Проверяет, что список не пустой
         /// </summary>
-        public static bool IsNotEmpty<T>(this IEnumerable<T> collection)
+        public static bool IsNotEmpty<T>(this IEnumerable<T>? collection)
         {
             return collection != null && collection.Any();
         }
@@ -34,9 +34,9 @@ namespace ApiTestFramework.Core
         public static TValue GetValueOrDefault<TKey, TValue>(
             this Dictionary<TKey, TValue> dictionary, 
             TKey key, 
-            TValue defaultValue = default)
+            TValue defaultValue = default!) where TKey : notnull
         {
-            return dictionary.TryGetValue(key, out var value) ? value : defaultValue;
+            return CollectionExtensions.GetValueOrDefault(dictionary, key, defaultValue);
         }
     }
 }

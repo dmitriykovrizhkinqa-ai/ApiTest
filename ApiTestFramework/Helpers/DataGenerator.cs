@@ -5,12 +5,12 @@ namespace ApiTestFramework.Helpers
 {
     public static class DataGenerator
     {
-        private static readonly Faker _faker = new Faker();
+        private static readonly Faker Faker = new();
 
-        public static string GetRandomName() => _faker.Name.FullName();
-        public static string GetRandomEmail() => _faker.Internet.Email();
-        public static string GetRandomPhone() => _faker.Phone.PhoneNumber();
-        public static string GetRandomCity() => _faker.Address.City();
+        public static string GetRandomName() => Faker.Name.FullName();
+        public static string GetRandomEmail() => Faker.Internet.Email();
+        public static string GetRandomPhone() => Faker.Phone.PhoneNumber();
+        public static string GetRandomCity() => Faker.Address.City();
         
         // Генерация фейкового пользователя
         public static User GetRandomUser()
@@ -18,10 +18,10 @@ namespace ApiTestFramework.Helpers
             return new User
             {
                 Name = GetRandomName(),
-                Username = _faker.Internet.UserName(),
+                Username = Faker.Internet.UserName(),
                 Email = GetRandomEmail(),
                 Phone = GetRandomPhone(),
-                Website = _faker.Internet.DomainName()
+                Website = Faker.Internet.DomainName()
             };
         }
 
@@ -30,10 +30,10 @@ namespace ApiTestFramework.Helpers
         {
             return new Order
             {
-                UserId = _faker.Random.Int(1, 100),
-                Title = _faker.Lorem.Sentence(5),
-                Body = _faker.Lorem.Paragraph(2),
-                Completed = _faker.Random.Bool()
+                UserId = Faker.Random.Int(1, 100),
+                Title = Faker.Lorem.Sentence(5),
+                Body = Faker.Lorem.Paragraph(2),
+                Completed = Faker.Random.Bool()
             };
         }
 
@@ -41,7 +41,7 @@ namespace ApiTestFramework.Helpers
         public static Order[] GetRandomOrders(int count = 5)
         {
             var orders = new Order[count];
-            for (int i = 0; i < count; i++)
+            for (var i = 0; i < count; i++)
             {
                 orders[i] = GetRandomOrder();
             }

@@ -6,29 +6,27 @@ namespace ApiTestFramework.ApiTests
     [SetUpFixture]
     public abstract class BaseTest
     {
-        protected RestClient Client;
+        private RestClient _client;
+        private IConfiguration _config;
         protected string BaseUrl;
-        protected IConfiguration Config;
 
         [OneTimeSetUp]
         public void GlobalSetup()
         {
-            // Читаем конфиг из appsettings.json
             var builder = new ConfigurationBuilder()
                 .SetBasePath(Directory.GetCurrentDirectory())
                 .AddJsonFile("appsettings.json", optional: false, reloadOnChange: true);
 
-            Config = builder.Build();
-            BaseUrl = Config["ApiBaseUrl"] ?? "https://jsonplaceholder.typicode.com";
+            _config = builder.Build();
+            BaseUrl = _config["ApiBaseUrl"] ?? "https://jsonplaceholder.typicode.com";
             
-            // Таймаут из конфига
-            var timeout = Config.GetValue<int>("TimeoutSeconds", 30);
+            var timeout = _config.GetValue("TimeoutSeconds", 30);
             var options = new RestClientOptions(BaseUrl)
             {
                 Timeout = TimeSpan.FromSeconds(timeout)
             };
             
-            Client = new RestClient(options);
+            _client = new RestClient(options);
             Console.WriteLine($"[INFO] Тесты запущены на {BaseUrl}");
             Console.WriteLine($"[INFO] Таймаут: {timeout} секунд");
         }
@@ -36,7 +34,7 @@ namespace ApiTestFramework.ApiTests
         [OneTimeTearDown]
         public void GlobalTeardown()
         {
-            Client?.Dispose();
+            _client.Dispose();
             Console.WriteLine("[INFO] Завершение тестов");
         }
     }

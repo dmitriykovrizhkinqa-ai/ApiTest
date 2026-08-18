@@ -1,0 +1,23 @@
+[REQUEST] POST /users
+[BODY] {
+  "Id": 0,
+  "Name": "Annabell Morar",
+  "Username": "Cornell.Feest",
+  "Email": "Jennyfer27@hotmail.com",
+  "Address": null,
+  "Phone": "(240) 783-8666 x797",
+  "Website": "elias.org",
+  "Company": null
+}
+[RESPONSE] Status: 201 Created
+[RESPONSE] Body: {
+  "id": 11,
+  "name": "Annabell Morar",
+  "username": "Cornell.Feest",
+  "email": "Jennyfer27@hotmail.com",
+  "address": null,
+  "phone": "(240) 783-8666 x797",
+  "website": "elias.org",
+  "company": null
+}
+--------------------------------------------------------------------------------

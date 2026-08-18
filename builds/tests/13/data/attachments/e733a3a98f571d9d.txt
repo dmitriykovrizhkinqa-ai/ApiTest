@@ -1,0 +1,23 @@
+[REQUEST] PUT /users/1
+[BODY] {
+  "Id": 1,
+  "Name": "Violette Armstrong",
+  "Username": "Margarita8",
+  "Email": "Agnes.Bogan31@gmail.com",
+  "Address": null,
+  "Phone": "1-834-471-9804 x3726",
+  "Website": "alberta.info",
+  "Company": null
+}
+[RESPONSE] Status: 200 OK
+[RESPONSE] Body: {
+  "id": 1,
+  "name": "Violette Armstrong",
+  "username": "Margarita8",
+  "email": "Agnes.Bogan31@gmail.com",
+  "address": null,
+  "phone": "1-834-471-9804 x3726",
+  "website": "alberta.info",
+  "company": null
+}
+--------------------------------------------------------------------------------

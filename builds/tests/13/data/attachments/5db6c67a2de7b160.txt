@@ -1,0 +1,29 @@
+[REQUEST] POST /posts
+[BODY] {
+  "Id": 0,
+  "UserId": 33,
+  "Title": "Quo ducimus quaerat dolor et.",
+  "Body": "Vitae aut ut. At autem distinctio est voluptatem quos asperiores eos. Architecto et ducimus ut laboriosam sint nisi accusamus. Dolorum rem quis nulla cupiditate molestias dolor numquam eum accusantium. Sed dicta a.",
+  "Completed": false
+}
+[RESPONSE] Status: 201 Created
+[RESPONSE] Body: {
+  "id": 101,
+  "userId": 33,
+  "title": "Quo ducimus quaerat dolor et.",
+  "body": "Vitae aut ut. At autem distinctio est voluptatem quos asperiores eos. Architecto et ducimus ut laboriosam sint nisi accusamus. Dolorum rem quis nulla cupiditate molestias dolor numquam eum accusantium. Sed dicta a.",
+  "completed": false
+}
+--------------------------------------------------------------------------------
+     Warning:
+     The component "Fluent Assertions" is governed by the rules defined in the Xceed License Agreement and
+     the Xceed Fluent Assertions Community License. You may use Fluent Assertions free of charge for
+     non-commercial use only. An active subscription is required to use Fluent Assertions for commercial use.
+
+     Please contact Xceed Sales mailto:sales@xceed.com to acquire a subscription at a very low cost.
+
+     A paid commercial license supports the development and continued increasing support of
+     Fluent Assertions users under both commercial and community licenses. Help us
+     keep Fluent Assertions at the forefront of unit testing.
+
+     For more information, visit https://xceed.com/products/unit-testing/fluent-assertions/

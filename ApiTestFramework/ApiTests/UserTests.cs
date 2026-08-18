@@ -60,12 +60,10 @@ namespace ApiTestFramework.ApiTests
         [Test, Category("Regression")]
         public async Task UpdateUser_ShouldReturnSuccess()
         {
-            const int userId = 1;
-            
             var updatedUser = DataGenerator.GetRandomUser();
-            updatedUser.Id = userId;
+            updatedUser.Id = Constants.Id;
             
-            var endpoint = Endpoints.UserById(userId.ToString());
+            var endpoint = Endpoints.UserById(Constants.Id.ToString());
             var response = await _apiClient.PutAsync<User>(endpoint, updatedUser);
 
             response.StatusCode.Should().Be(System.Net.HttpStatusCode.OK);
@@ -77,9 +75,7 @@ namespace ApiTestFramework.ApiTests
         [Test, Category("Regression")]
         public async Task DeleteUser_ShouldReturnSuccess()
         {
-            const int userId = 1;
-            
-            var endpoint = Endpoints.UserById(userId.ToString());
+            var endpoint = Endpoints.UserById(Constants.Id.ToString());
             var response = await _apiClient.DeleteAsync(endpoint);
 
             response.StatusCode.Should().Be(System.Net.HttpStatusCode.OK);

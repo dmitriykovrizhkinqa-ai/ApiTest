@@ -31,13 +31,12 @@ namespace ApiTestFramework.ApiTests
         [Test, Category("Smoke")]
         public async Task GetOrderById_ShouldReturnCorrectOrder()
         {
-            const int orderId = 1;
-            var endpoint = Endpoints.OrderById(orderId.ToString());
+            var endpoint = Endpoints.OrderById(Constants.Id.ToString());
             var response = await _apiClient.GetAsync<Order>(endpoint);
 
             response.StatusCode.Should().Be(HttpStatusCode.OK);
             response.Data.Should().NotBeNull();
-            response.Data.Id.Should().Be(orderId);
+            response.Data.Id.Should().Be(Constants.Id);
             response.Data.Title.Should().NotBeNullOrEmpty();
         }
 
@@ -47,7 +46,7 @@ namespace ApiTestFramework.ApiTests
             var newOrder = DataGenerator.GetRandomOrder();
             var response = await _apiClient.PostAsync<Order>(Endpoints.Orders, newOrder);
 
-            response.StatusCode.Should().Be(System.Net.HttpStatusCode.Created);
+            response.StatusCode.Should().Be(HttpStatusCode.Created);
             response.Data.Should().NotBeNull();
             response.Data.Id.Should().BeGreaterThan(0);
         }

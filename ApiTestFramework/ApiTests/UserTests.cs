@@ -1,4 +1,6 @@
-﻿using ApiTestFramework.Core;
+﻿using Allure.NUnit;
+using Allure.NUnit.Attributes;
+using ApiTestFramework.Core;
 using ApiTestFramework.Models;
 using ApiTestFramework.Helpers;
 using FluentAssertions;
@@ -6,6 +8,9 @@ using FluentAssertions;
 namespace ApiTestFramework.ApiTests
 {
     [TestFixture]
+    [AllureNUnit]
+    [AllureFeature("Основная функциональность")]
+    [AllureParentSuite("API Тесты")]
     public class UserTests : BaseTest
     {
         private ApiClient _apiClient;
@@ -16,7 +21,9 @@ namespace ApiTestFramework.ApiTests
             _apiClient = new ApiClient(BaseUrl);
         }
 
-        [Test, Category("Smoke")]
+        [Test]
+        [AllureTag("Smoke")]
+        [AllureDescription("Проверяем получение списка всех пользователей")]
         public async Task GetUsers_ShouldReturnSuccess()
         {
             const string endpoint = Endpoints.Users;
@@ -30,7 +37,9 @@ namespace ApiTestFramework.ApiTests
             Logger.LogInfo($"Получено {response.Data.Length} пользователей");
         }
 
-        [Test, Category("Smoke")]
+        [Test]
+        [AllureTag("Smoke")]
+        [AllureDescription("Проверяем получение пользователя по id")]
         public async Task GetUserById_ShouldReturnCorrectUser()
         {
             const int userId = 1;
@@ -44,7 +53,9 @@ namespace ApiTestFramework.ApiTests
             response.Data.Name.Should().NotBeNullOrEmpty();
         }
 
-        [Test, Category("Regression")]
+        [Test]
+        [AllureTag("Regression")]
+        [AllureDescription("Проверяем создание пользователя")]
         public async Task CreateUser_ShouldReturnCreated()
         {
             var newUser = DataGenerator.GetRandomUser();
@@ -57,7 +68,9 @@ namespace ApiTestFramework.ApiTests
             response.Data.Email.Should().Be(newUser.Email);
         }
 
-        [Test, Category("Regression")]
+        [Test]
+        [AllureTag("Regression")]
+        [AllureDescription("Проверяем изменение пользователя")]
         public async Task UpdateUser_ShouldReturnSuccess()
         {
             var updatedUser = DataGenerator.GetRandomUser();
@@ -72,7 +85,9 @@ namespace ApiTestFramework.ApiTests
             response.Data.Email.Should().Be(updatedUser.Email);
         }
 
-        [Test, Category("Regression")]
+        [Test]
+        [AllureTag("Regression")]
+        [AllureDescription("Проверяем удаление пользователя")]
         public async Task DeleteUser_ShouldReturnSuccess()
         {
             var endpoint = Endpoints.UserById(Constants.Id.ToString());

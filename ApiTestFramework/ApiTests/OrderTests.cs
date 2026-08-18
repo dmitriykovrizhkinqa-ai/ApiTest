@@ -1,4 +1,6 @@
-﻿using System.Net;
+﻿using Allure.NUnit;
+using Allure.NUnit.Attributes;
+using System.Net;
 using ApiTestFramework.Core;
 using ApiTestFramework.Models;
 using ApiTestFramework.Helpers;
@@ -7,6 +9,9 @@ using FluentAssertions;
 namespace ApiTestFramework.ApiTests
 {
     [TestFixture]
+    [AllureNUnit]
+    [AllureFeature("Основная функциональность")]
+    [AllureParentSuite("API Тесты")]
     public class OrderTests : BaseTest
     {
         private ApiClient _apiClient;
@@ -17,7 +22,9 @@ namespace ApiTestFramework.ApiTests
             _apiClient = new ApiClient(BaseUrl);
         }
 
-        [Test, Category("Smoke")]
+        [Test]
+        [AllureTag("Smoke")]
+        [AllureDescription("Проверяем получение всех заказов")]
         public async Task GetOrders_ShouldReturnSuccess()
         {
             const string endpoint = Endpoints.Orders;
@@ -28,7 +35,9 @@ namespace ApiTestFramework.ApiTests
             response.Data.Length.Should().BeGreaterThan(0);
         }
 
-        [Test, Category("Smoke")]
+        [Test]
+        [AllureTag("Smoke")]
+        [AllureDescription("Проверяем получение заказа по id")]
         public async Task GetOrderById_ShouldReturnCorrectOrder()
         {
             var endpoint = Endpoints.OrderById(Constants.Id.ToString());
@@ -40,7 +49,9 @@ namespace ApiTestFramework.ApiTests
             response.Data.Title.Should().NotBeNullOrEmpty();
         }
 
-        [Test, Category("Regression")]
+        [Test]
+        [AllureTag("Regression")]
+        [AllureDescription("Проверяем создание заказа")]
         public async Task CreateOrder_ShouldReturnCreated()
         {
             var newOrder = DataGenerator.GetRandomOrder();

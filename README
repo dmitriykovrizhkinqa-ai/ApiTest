@@ -1,5 +1,7 @@
 # API Test Framework на C# + RestSharp + NUnit
 
+[![API Tests with Allure Report](https://github.com/dmitriykovrizhkinqa-ai/ApiTest/actions/workflows/dotnet-tests.yml/badge.svg)](https://github.com/dmitriykovrizhkinqa-ai/ApiTest/actions/workflows/dotnet-tests.yml)
+
 ## Описание
 Фреймворк для автоматизации API-тестирования, разработанный в рамках pet-проекта.
 
@@ -10,13 +12,11 @@
 - RestSharp 110
 - FluentAssertions 6
 - Bogus (генерация тестовых данных)
-- GitLab CI
-- Allure NUnit
+- Allure NUnit (визуализация отчётов)
 
 ## Запуск тестов локально
+
 ```bash
 dotnet restore
 dotnet build
 dotnet test
-
-[![API Tests with Allure Report](https://github.com/dmitriykovrizhkinqa-ai/ApiTest/actions/workflows/dotnet-tests.yml/badge.svg)](https://github.com/dmitriykovrizhkinqa-ai/ApiTest/actions/workflows/dotnet-tests.yml)

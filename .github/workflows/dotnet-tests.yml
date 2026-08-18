@@ -72,3 +72,5 @@ jobs:
         publish_branch: gh-pages
         publish_dir: ${{ steps.allure-report.outputs.reports-site }}
         destination_dir: ${{ steps.allure-report.outputs.reports-site-path }}
+        keep_files: false
+        force_orphan: true

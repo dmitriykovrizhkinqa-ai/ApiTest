@@ -18,3 +18,5 @@
 dotnet restore
 dotnet build
 dotnet test
+
+[![API Tests with Allure Report](https://github.com/dmitriykovrizhkinqa-ai/ApiTest/actions/workflows/dotnet-tests.yml/badge.svg)](https://github.com/dmitriykovrizhkinqa-ai/ApiTest/actions/workflows/dotnet-tests.yml)

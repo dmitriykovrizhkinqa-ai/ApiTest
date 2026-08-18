@@ -11,6 +11,7 @@
 - FluentAssertions 6
 - Bogus (генерация тестовых данных)
 - GitLab CI
+- Allure NUnit
 
 ## Запуск тестов локально
 ```bash

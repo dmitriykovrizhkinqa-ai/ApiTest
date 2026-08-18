@@ -3,7 +3,7 @@ using ApiTestFramework.Models;
 using ApiTestFramework.Helpers;
 using FluentAssertions;
 
-namespace ApiTestFramework.ApiTests  // <-- исправлено
+namespace ApiTestFramework.ApiTests
 {
     [TestFixture]
     public class UserTests : BaseTest

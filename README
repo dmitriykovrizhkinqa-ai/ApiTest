@@ -1,0 +1,19 @@
+# API Test Framework на C# + RestSharp + NUnit
+
+## Описание
+Фреймворк для автоматизации API-тестирования, разработанный в рамках pet-проекта.
+
+## Стек технологий
+- .NET 8
+- C# 12
+- NUnit 4
+- RestSharp 110
+- FluentAssertions 6
+- Bogus (генерация тестовых данных)
+- GitLab CI
+
+## Запуск тестов локально
+```bash
+dotnet restore
+dotnet build
+dotnet test
